@@ -14,3 +14,14 @@ public:
 LinkList(){
     head = nullptr;
 }
+void insertAtstart(int data){
+    Node *temp = new Node{data,head};
+    head = temp;
+}
+
+void insertAtEnd(int data){
+    Node *temp = new Node{data,nullptr};
+    if(head == nullptr){
+      head= temp;
+      return;
+    }
