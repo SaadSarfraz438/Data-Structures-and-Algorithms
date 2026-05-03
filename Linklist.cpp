@@ -25,3 +25,36 @@ void insertAtEnd(int data){
       head= temp;
       return;
     }
+node*current=head;
+while(current->next!=nullptr){
+    current->next;
+}
+current->next=temp;
+}
+void insertAtposition(int data,int pos){
+    if(pos==1){
+        insertAtstart(data);
+        return;
+    }
+    Node *current = head;
+    for(int i=1;i<pos && current != nullptr;i++){
+        current = current->next;
+    }
+    if(current == nullptr){
+        cout<<"Invalid position"<<endl;
+        return;
+    }
+   
+    Node *temp = new Node{data,current->next};
+    current->next = temp;
+}
+void deleteFromStart(){
+    if(head == nullptr){
+        cout<<"List is empty\n";
+        return;
+    }
+    Node *temp =head;
+    head = head->next;
+    delete temp;
+}
+}
