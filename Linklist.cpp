@@ -10,6 +10,7 @@ class LinkList{
 private:
 
 Node * head;
+
 public:
 LinkList(){
     head = nullptr;
@@ -25,14 +26,17 @@ void insertAtEnd(int data){
       head= temp;
       return;
     }
-node*current=head;
-while(current->next!=nullptr){
-    current->next;
+    Node *current = head;
+    while(current->next != nullptr){
+        current = current->next;
+
+    }
+    current->next = temp;
 }
-current->next=temp;
-}
-void insertAtposition(int data,int pos){
-    if(pos==1){
+
+void insertAtposition(int data,int pos)
+{
+    if (pos == 1){
         insertAtstart(data);
         return;
     }
@@ -45,30 +49,36 @@ void insertAtposition(int data,int pos){
         return;
     }
    
-    Node *temp=new Node{data,current->next};
-    current->next=temp;
+    Node *temp = new Node{data,current->next};
+    current->next = temp;
 }
 void deleteFromStart(){
-    if(head==nullptr){
+    if(head == nullptr){
         cout<<"List is empty\n";
         return;
     }
-    Node*temp=head;
+    Node *temp =head;
     head = head->next;
     delete temp;
 }
+
 void deleteFromEnd(){
     if(head ==nullptr){
         cout<<"List is empty\n";
         return;
     }
-    Node*current = head;
+   
+    Node * current = head;
     while(current->next->next != nullptr){
         current =current->next;
     }
+   
     delete current->next;
     current->next =nullptr;
+   
+   
 }
+
 void deleteAtposition(int pos){
     if(head = nullptr){
         cout<<"List is empty\n";
@@ -86,10 +96,12 @@ void deleteAtposition(int pos){
         cout<<"invalid poistion";
         return;
     }
+   
     Node *temp = current->next;
     current->next = temp->next;
     delete temp;
 }
+
 void search(int key){
     Node *current = head;
     int pos =1;
@@ -120,3 +132,61 @@ void display(){
 
 
 };
+int main(){
+LinkList list;
+int choice, data,pos,val;
+do{
+    cout<<"\n Linked List Menu \n";
+    cout<<"1. Insert at Start \n";
+    cout<<"2. Insert at End\n";
+    cout<<"3. Insert at Position\n";
+    cout<<"4. Delete from Start\n";
+    cout<<"5. Delete from End\n";
+    cout<<"6. Delete at Position\n";
+    cout<<"7. Search\n";
+    cout<<"8. Display\n";
+    cout<<"0. Exit\n";
+    cin>>choice;
+
+    switch(choice){
+        case 1:
+        cin>>data;
+        list.insertAtstart(data);
+        break;
+        case 2:
+        cin>>data;
+        list.insertAtEnd(data);
+        break;
+        case 3:
+        cout<<"Enter the Data"<<endl;
+        cin>>data;
+        cout<<"Enter the position"<<endl;
+        cin>>pos;
+        list.insertAtposition(data, pos);
+        break;
+        case 4:
+        list.deleteFromStart();
+        break;
+       
+        case 5:
+        list.deleteFromEnd();
+        break;
+        case 6:
+        cout<<"Enter the position which you want to delete\n";
+        cin>>pos;
+        list.deleteAtposition(pos);
+        break;
+        case 7:
+        cout<<"Enter the value which you want to search\n";
+        cin>>val;
+        list.search(val);
+        case 8:
+        list.display();
+        break;
+       
+
+    }
+}while(choice !=0);
+
+    return 0;
+}
