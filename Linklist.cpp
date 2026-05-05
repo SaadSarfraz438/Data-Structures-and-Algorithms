@@ -90,5 +90,33 @@ void deleteAtposition(int pos){
     current->next = temp->next;
     delete temp;
 }
-
+void search(int key){
+    Node *current = head;
+    int pos =1;
+    while(current != nullptr){
+        if(current->data == key){
+        cout<<"Element found at position"<<pos<<endl;
+            return;
+        }
+        current = current->next;
+        pos++;
+    }
+    cout<<"Element not found\n";
 }
+
+void display(){
+    if (head == nullptr){
+        cout<<"List is Empty"<<endl;
+        return;
+    }
+    Node * current = head;
+    while(current != nullptr){
+        cout<<current->data<<"->";
+        current= current->next;
+
+    }
+    cout<<"Null \n";
+}
+
+
+};
