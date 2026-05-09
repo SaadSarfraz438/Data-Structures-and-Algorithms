@@ -1,25 +1,33 @@
 #include<iostream>
 using namespace std;
+
+// ================= NODE STRUCTURE =================
 struct Node
 {
     int data;
     Node *next;
 };
 
+// ============== LINKED LIST CLASS ==============
 class LinkList{
 private:
 
 Node * head;
 
 public:
+
+    // ================= CONSTRUCTOR =================
 LinkList(){
     head = nullptr;
 }
+
+    // ================= INSERT AT START =================
 void insertAtstart(int data){
     Node *temp = new Node{data,head};
     head = temp;
 }
 
+    // ================= INSERT AT END =================
 void insertAtEnd(int data){
     Node *temp = new Node{data,nullptr};
     if(head == nullptr){
@@ -34,6 +42,7 @@ void insertAtEnd(int data){
     current->next = temp;
 }
 
+    // ================= INSERT AT POSITION =================
 void insertAtposition(int data,int pos)
 {
     if (pos == 1){
@@ -52,6 +61,7 @@ void insertAtposition(int data,int pos)
     Node *temp = new Node{data,current->next};
     current->next = temp;
 }
+    // ================= DELETE FROM START =================
 void deleteFromStart(){
     if(head == nullptr){
         cout<<"List is empty\n";
@@ -62,6 +72,7 @@ void deleteFromStart(){
     delete temp;
 }
 
+    // ================= DELETE FROM END =================
 void deleteFromEnd(){
     if(head ==nullptr){
         cout<<"List is empty\n";
@@ -79,6 +90,7 @@ void deleteFromEnd(){
    
 }
 
+    // ================= DELETE AT POSITION =================
 void deleteAtposition(int pos){
     if(head = nullptr){
         cout<<"List is empty\n";
@@ -102,6 +114,7 @@ void deleteAtposition(int pos){
     delete temp;
 }
 
+    // ================= SEARCH =================
 void search(int key){
     Node *current = head;
     int pos =1;
@@ -116,6 +129,7 @@ void search(int key){
     cout<<"Element not found\n";
 }
 
+    // ================= DISPLAY =================
 void display(){
     if (head == nullptr){
         cout<<"List is Empty"<<endl;
@@ -132,6 +146,8 @@ void display(){
 
 
 };
+
+// ================= MAIN FUNCTION =================
 int main(){
 LinkList list;
 int choice, data,pos,val;
