@@ -1,1 +1,65 @@
+#include<iostream>
+using namespace std;
 
+// ================= NODE STRUCTURE =================
+struct Node {
+    int data;
+    Node* next;
+};
+
+// ============== CIRCULAR LINKED LIST CLASS ==============
+class CircularLinkedList {
+private:
+    Node* head;
+
+public:
+
+    // ================= CONSTRUCTOR =================
+    CircularLinkedList() {
+        head = nullptr;
+    }
+
+    // ================= INSERT AT START =================
+    void insertAtStart(int data) {
+
+        Node* temp = new Node{data, nullptr};
+
+        // Empty list
+        if (head == nullptr) {
+            head = temp;
+            temp->next = head;
+            return;
+        }
+
+        Node* current = head;
+
+        // Reach last node
+        while (current->next != head) {
+            current = current->next;
+        }
+
+        temp->next = head;
+        current->next = temp;
+        head = temp;
+    }
+ // ================= INSERT AT END =================
+    void insertAtEnd(int data) {
+
+        Node* temp = new Node{data, nullptr};
+
+        // Empty list
+        if (head == nullptr) {
+            head = temp;
+            temp->next = head;
+            return;
+        }
+
+        Node* current = head;
+
+        while (current->next != head) {
+            current = current->next;
+        }
+
+        current->next = temp;
+        temp->next = head;
+    }
