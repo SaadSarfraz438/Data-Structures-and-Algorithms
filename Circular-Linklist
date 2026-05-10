@@ -84,3 +84,31 @@ public:
         temp->next = current->next;
         current->next = temp;
     }
+     // ================= DELETE FROM START =================
+    void deleteFromStart() {
+
+        if (head == nullptr) {
+            cout << "List is empty\n";
+            return;
+        }
+
+        // Single node
+        if (head->next == head) {
+            delete head;
+            head = nullptr;
+            return;
+        }
+
+        Node* current = head;
+
+        while (current->next != head) {
+            current = current->next;
+        }
+
+        Node* temp = head;
+
+        head = head->next;
+        current->next = head;
+
+        delete temp;
+    }
