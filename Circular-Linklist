@@ -63,3 +63,24 @@ public:
         current->next = temp;
         temp->next = head;
     }
+    
+  // ================= INSERT AT POSITION =================
+    void insertAtPosition(int data, int pos) {
+
+        // Insert at start
+        if (pos == 1) {
+            insertAtStart(data);
+            return;
+        }
+
+        Node* current = head;
+
+        for (int i = 1; i < pos - 1 && current->next != head; i++) {
+            current = current->next;
+        }
+
+        Node* temp = new Node{data, nullptr};
+
+        temp->next = current->next;
+        current->next = temp;
+    }
