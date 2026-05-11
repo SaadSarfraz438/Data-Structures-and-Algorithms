@@ -112,3 +112,27 @@ public:
 
         delete temp;
     }
+      // ================= DELETE FROM END =================
+    void deleteFromEnd() {
+
+        if (head == nullptr) {
+            cout << "List is empty\n";
+            return;
+        }
+
+        // Single node
+        if (head->next == head) {
+            delete head;
+            head = nullptr;
+            return;
+        }
+
+        Node* current = head;
+
+        while (current->next->next != head) {
+            current = current->next;
+        }
+
+        delete current->next;
+        current->next = head;
+    }
