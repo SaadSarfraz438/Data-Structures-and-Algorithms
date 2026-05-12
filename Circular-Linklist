@@ -136,3 +136,35 @@ public:
         delete current->next;
         current->next = head;
     }
+    
+    // ================= DELETE AT POSITION =================
+    void deleteAtPosition(int pos) {
+
+        if (head == nullptr) {
+            cout << "List is empty\n";
+            return;
+        }
+
+        if (pos == 1) {
+            deleteFromStart();
+            return;
+        }
+
+        Node* current = head;
+
+        for (int i = 1; i < pos - 1 && current->next != head; i++) {
+            current = current->next;
+        }
+
+        Node* temp = current->next;
+
+        // Invalid position
+        if (temp == head) {
+            cout << "Invalid Position\n";
+            return;
+        }
+
+        current->next = temp->next;
+
+        delete temp;
+    }
