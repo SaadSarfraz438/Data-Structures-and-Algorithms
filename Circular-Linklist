@@ -192,3 +192,21 @@ public:
 
         cout << "Element not found\n";
     }
+      // ================= DISPLAY =================
+    void display() {
+
+        if (head == nullptr) {
+            cout << "List is empty\n";
+            return;
+        }
+
+        Node* current = head;
+
+        do {
+            cout << current->data << " -> ";
+            current = current->next;
+
+        } while (current != head);
+
+        cout << "(HEAD)\n";
+    }
