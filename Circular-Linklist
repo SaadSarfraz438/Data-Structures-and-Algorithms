@@ -210,3 +210,41 @@ public:
 
         cout << "(HEAD)\n";
     }
+     // ================= COUNT NODES =================
+    void countNodes() {
+
+        if (head == nullptr) {
+            cout << "Total Nodes: 0\n";
+            return;
+        }
+
+        int count = 0;
+        Node* current = head;
+
+        do {
+            count++;
+            current = current->next;
+
+        } while (current != head);
+
+        cout << "Total Nodes: " << count << endl;
+    }
+
+    // ================= DESTRUCTOR =================
+    ~CircularLinkedList() {
+
+        if (head == nullptr)
+            return;
+
+        Node* current = head->next;
+
+        while (current != head) {
+
+            Node* temp = current;
+            current = current->next;
+            delete temp;
+        }
+
+        delete head;
+    }
+};
